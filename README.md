@@ -1,16 +1,37 @@
 # flutter_todo
 
-A new Flutter project.
+Todoアプリ、パスワード管理機能
 
-## Getting Started
+## Flutterの開発に必要なツールインストール
 
-This project is a starting point for a Flutter application.
+- サイトからFulutterのダウンロード
 
-A few resources to get you started if this is your first Flutter project:
+https://docs.flutter.dev/get-started/install
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- androidstudioのダウンロード
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://developer.android.com/studio/index.html?hl=ja
+
+- androidSDKのダウンロード（上記インストール時に聞かなければ）
+
+https://developer.android.com/studio/releases/platform-tools?hl=ja
+
+## vscodeでの環境の始め方
+
+- 拡張機能、Flutterのインストール
+
+- 下記コマンド実行して、問題ないかの確認 (Visual Studio - develop for Windowsのエラーに関してはスルーしてOK)
+>flutter doctor
+
+- androidstadioを開き、createdeviceを選択し、好きなデバイスを選択して作成
+
+vscodeの右下にデバイスの選択する部分があるため、そこで先ほど作ったデバイスを選択
+
+エミュレータが作動し起動していることの確認
+
+## 新規プロジェクト作成方法
+
+windowsなら、ctrl+shift+p でflutterを検索し、new projectを選択
+
+
+
