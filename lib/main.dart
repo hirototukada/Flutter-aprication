@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'next_page.dart';
+import 'edit.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,10 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             );
           }),
+      // 右下のボタン
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          titleList.add('Google');
-          setState(() {});
+          // ルート
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Edit()));
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
