@@ -12,7 +12,7 @@ https://docs.flutter.dev/get-started/install
 
 https://developer.android.com/studio/index.html?hl=ja
 
-- androidSDKのダウンロード（上記インストール時に聞かなければ）
+- androidSDKのダウンロード（上記インストール時に聞かれなければ）
 
 https://developer.android.com/studio/releases/platform-tools?hl=ja
 
