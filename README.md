@@ -23,15 +23,22 @@ https://developer.android.com/studio/releases/platform-tools?hl=ja
 - 下記コマンド実行して、問題ないかの確認 (Visual Studio - develop for Windowsのエラーに関してはスルーしてOK)
 >flutter doctor
 
+## 新規プロジェクト作成方法
+
+windowsなら、ctrl+shift+p でflutterを検索し、new projectを選択
+
+## 実行環境確認
+
 - androidstadioを開き、createdeviceを選択し、好きなデバイスを選択して作成
 
 vscodeの右下にデバイスの選択する部分があるため、そこで先ほど作ったデバイスを選択
 
 エミュレータが作動し起動していることの確認
 
-## 新規プロジェクト作成方法
+下記の手順で、サーバーのにアクセス
 
-windowsなら、ctrl+shift+p でflutterを検索し、new projectを選択
+- タブの実行（run）を選択　→　デバッグの開始
+
 
 
 
