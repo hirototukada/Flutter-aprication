@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class Edit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    String name = '';
+    String password = '';
     return Scaffold(
       appBar: AppBar(
         title: const Text('追加画面'),
@@ -12,32 +14,24 @@ class Edit extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                SizedBox(
-                  width: 80,
-                  child: const Text('ID'),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: TextFormField(),
-                )
-              ],
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'ユーザー名',
+              ),
+              onChanged: ((text) {
+                name = text;
+              }),
             ),
             const SizedBox(
               height: 20,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 80,
-                  child: const Text('パスワード'),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: TextFormField(),
-                )
-              ],
+            TextField(
+              decoration: InputDecoration(
+                hintText: 'パスワード',
+              ),
+              onChanged: ((text) {
+                password = text;
+              }),
             ),
             const SizedBox(
               height: 20,
@@ -45,7 +39,9 @@ class Edit extends StatelessWidget {
             Row(
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    print(name);
+                  },
                   child: const Text('追加'),
                 ),
               ],
