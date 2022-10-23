@@ -68,9 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           // ルート
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Edit()));
+              context, MaterialPageRoute(builder: (context) => Edit()));
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

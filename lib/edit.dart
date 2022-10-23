@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/sqflite.dart';
 
 class Edit extends StatelessWidget {
+  void setState(Null Function() param0) {}
+  Future<void> initDb() async {
+    await DBProivider.setDb();
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     String name = '';
