@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/password.dart';
 
 import 'next_page.dart';
 import 'edit.dart';
@@ -33,13 +34,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<String> titleList = ['Amazon', '楽天', 'Yahoo!'];
+  List<Password> passwordList = [
+    Password(name: 'Amazon', userId: 'hiroto@mail.com', password: 'password'),
+  ];
   int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter 練習1'),
+        title: const Text('Flutter'),
       ),
       body: ListView.builder(
           itemCount: titleList.length,
