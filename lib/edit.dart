@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_todo/main.dart';
 import 'package:flutter_todo/password.dart';
 import 'package:flutter_todo/sqflite.dart';
 
@@ -63,7 +64,6 @@ class Edit extends StatelessWidget {
                     onPressed: () async {
                       Password passwordList = Password(
                           name: name, userId: mail, password: password);
-                      print(name);
                       await DBProvider.insertData(passwordList);
                     },
                     child: const Text('追加'),

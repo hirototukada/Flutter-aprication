@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/password.dart';
+import 'package:flutter_todo/sqflite.dart';
 
 import 'next_page.dart';
 import 'edit.dart';
@@ -34,9 +35,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<String> titleList = ['Amazon', '楽天', 'Yahoo!'];
-  List<Password> passwordList = [
-    Password(name: 'Amazon', userId: 'hiroto@mail.com', password: 'password'),
-  ];
+  List<Password> passwordList = [];
+  // Db定義
+  Future<void> initDb() async {
+    await DBProvider.setDb();
+    passwordList = await DBProvider.getData();
+    setState(() {});
+  }
+
   int _counter = 0;
 
   @override
@@ -54,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   leading: const Icon(Icons.key),
                   title: Text(titleList[index]),
                   onTap: () {
-                    print('リストがタップっされた!');
+                    print(passwordList);
                     Navigator.push(
                         context,
                         MaterialPageRoute(

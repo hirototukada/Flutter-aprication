@@ -33,4 +33,20 @@ class DBProvider {
       'password': password.password.toString(),
     });
   }
+
+  static Future<List<Password>> getData() async {
+    final List<Map<String, dynamic>> maps = await database!.query(tableName);
+    print(maps);
+    if (maps.length == 0) {
+      return [];
+    } else {
+      List<Password> passwordList = List.generate(
+          maps.length,
+          (index) => Password(
+              name: maps[index]['name'],
+              userId: maps[index]['user_id'],
+              password: maps[index]['password']));
+      return passwordList;
+    }
+  }
 }
