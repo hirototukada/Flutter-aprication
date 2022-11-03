@@ -18,6 +18,7 @@ class Edit extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('追加画面'),
+        backgroundColor: Colors.black87,
       ),
       body: Padding(
         padding: const EdgeInsets.all(50.0),
@@ -65,6 +66,7 @@ class Edit extends StatelessWidget {
                       Password passwordList = Password(
                           name: name, userId: mail, password: password);
                       await DBProvider.insertData(passwordList);
+                      Navigator.pop(context);
                     },
                     child: const Text('追加'),
                   ),

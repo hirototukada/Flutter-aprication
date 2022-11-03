@@ -1,10 +1,11 @@
 import 'package:flutter_todo/password.dart';
 import 'package:sqflite/sqflite.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 class DBProvider {
   static Database? database;
-  static final String tableName = 'password';
+  static const String tableName = 'password';
 
   static Future<void> _createTable(Database db, int version) async {
     await db.execute(
@@ -12,12 +13,13 @@ class DBProvider {
   }
 
   static Future<Database> initDb() async {
-    String path = join(await getDatabasesPath(), 'alarm_app.db');
+    String path = join(await getDatabasesPath(), 'password.db');
     return await openDatabase(path, version: 1, onCreate: _createTable);
   }
 
   static Future<Database?> setDb() async {
     if (database == null) {
+      print('どう');
       database = await initDb();
       return database;
     } else {
@@ -26,8 +28,8 @@ class DBProvider {
   }
 
   static Future<void> insertData(Password password) async {
-    print(password);
-    await database!.insert(tableName, {
+    print(database);
+    await database?.insert(tableName, {
       'name': password.name.toString(),
       'user_id': password.userId.toString(),
       'password': password.password.toString(),
@@ -36,7 +38,6 @@ class DBProvider {
 
   static Future<List<Password>> getData() async {
     final List<Map<String, dynamic>> maps = await database!.query(tableName);
-    print(maps);
     if (maps.length == 0) {
       return [];
     } else {

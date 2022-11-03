@@ -50,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter'),
+        backgroundColor: Colors.black87,
       ),
       body: ListView.builder(
           itemCount: titleList.length,
@@ -82,6 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+        backgroundColor: Colors.blue,
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
