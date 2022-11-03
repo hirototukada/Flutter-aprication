@@ -15,6 +15,7 @@ class Edit extends StatelessWidget {
     String name = '';
     String password = '';
     String mail = '';
+    initDb();
     return Scaffold(
       appBar: AppBar(
         title: const Text('追加画面'),

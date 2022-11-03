@@ -38,6 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Password> passwordList = [];
   // Db定義
   Future<void> initDb() async {
+    print('DB定義');
+    await DBProvider.setDb();
+    passwordList = await DBProvider.getData();
+    setState(() {});
+  }
+
+  Future<void> rebuild() async {
     await DBProvider.setDb();
     passwordList = await DBProvider.getData();
     setState(() {});
@@ -46,26 +53,35 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    initDb();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    initDb();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter'),
         backgroundColor: Colors.black87,
       ),
       body: ListView.builder(
-          itemCount: titleList.length,
+          itemCount: passwordList.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
                 ListTile(
                   leading: const Icon(Icons.key),
-                  title: Text(titleList[index]),
+                  title: Text(passwordList[index].name),
                   onTap: () {
-                    print(passwordList);
+                    rebuild();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => NextPage(titleList[index])));
+                            builder: (context) =>
+                                NextPage(passwordList[index].name)));
                   },
                 ),
                 const Divider(
@@ -77,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // 右下のボタン
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          rebuild();
           // ルート
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Edit()));

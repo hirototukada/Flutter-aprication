@@ -1,6 +1,5 @@
 import 'package:flutter_todo/password.dart';
 import 'package:sqflite/sqflite.dart';
-// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 class DBProvider {
@@ -19,7 +18,6 @@ class DBProvider {
 
   static Future<Database?> setDb() async {
     if (database == null) {
-      print('どう');
       database = await initDb();
       return database;
     } else {
@@ -28,7 +26,6 @@ class DBProvider {
   }
 
   static Future<void> insertData(Password password) async {
-    print(database);
     await database?.insert(tableName, {
       'name': password.name.toString(),
       'user_id': password.userId.toString(),
@@ -47,6 +44,8 @@ class DBProvider {
               name: maps[index]['name'],
               userId: maps[index]['user_id'],
               password: maps[index]['password']));
+      print('password取得');
+      print(passwordList[0].name);
       return passwordList;
     }
   }
