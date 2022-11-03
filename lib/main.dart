@@ -38,7 +38,6 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Password> passwordList = [];
   // Db定義
   Future<void> initDb() async {
-    print('DB定義');
     await DBProvider.setDb();
     passwordList = await DBProvider.getData();
     setState(() {});

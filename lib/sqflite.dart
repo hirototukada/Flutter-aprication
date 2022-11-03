@@ -44,8 +44,6 @@ class DBProvider {
               name: maps[index]['name'],
               userId: maps[index]['user_id'],
               password: maps[index]['password']));
-      print('password取得');
-      print(passwordList[0].name);
       return passwordList;
     }
   }
