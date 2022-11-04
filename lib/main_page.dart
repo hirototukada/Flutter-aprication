@@ -24,7 +24,6 @@ class _MainPageState extends State<MainPage> {
   }
 
   Future<void> rebuild() async {
-    await DBProvider.setDb();
     passwordList = await DBProvider.getData();
     setState(() {});
   }
@@ -51,12 +50,12 @@ class _MainPageState extends State<MainPage> {
                   leading: const Icon(Icons.key),
                   title: Text(passwordList[index].name),
                   onTap: () {
-                    rebuild();
                     Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
                                 NextPage(passwordList[index].name)));
+                    rebuild();
                   },
                 ),
                 const Divider(
@@ -67,10 +66,11 @@ class _MainPageState extends State<MainPage> {
           }),
       // 右下のボタン
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
           // ルート
-          Navigator.push(
+          await Navigator.push(
               context, MaterialPageRoute(builder: (context) => Edit()));
+          rebuild();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),

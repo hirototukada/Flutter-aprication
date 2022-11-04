@@ -4,8 +4,6 @@ import 'package:flutter_todo/password.dart';
 import 'package:flutter_todo/sqflite.dart';
 
 class Edit extends StatelessWidget {
-  void setState(Null Function() param0) {}
-
   @override
   Widget build(BuildContext context) {
     String name = '';
