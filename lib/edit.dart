@@ -5,17 +5,12 @@ import 'package:flutter_todo/sqflite.dart';
 
 class Edit extends StatelessWidget {
   void setState(Null Function() param0) {}
-  Future<void> initDb() async {
-    await DBProvider.setDb();
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
     String name = '';
     String password = '';
     String mail = '';
-    initDb();
     return Scaffold(
       appBar: AppBar(
         title: const Text('追加画面'),
