@@ -26,7 +26,7 @@ class DBProvider {
   }
 
   static Future<void> insertData(Password password) async {
-    await database?.insert(tableName, {
+    await database!.insert(tableName, {
       'name': password.name.toString(),
       'user_id': password.userId.toString(),
       'password': password.password.toString(),
@@ -46,5 +46,18 @@ class DBProvider {
               password: maps[index]['password']));
       return passwordList;
     }
+  }
+
+  static Future<void> updateData(Password password) async {
+    await database!.update(
+      tableName,
+      {
+        'name': password.name.toString(),
+        'user_id': password.userId.toString(),
+        'password': password.password.toString(),
+      },
+      where: 'id = ?',
+      whereArgs: [password.id],
+    );
   }
 }

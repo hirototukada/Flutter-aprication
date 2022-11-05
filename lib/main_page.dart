@@ -54,7 +54,7 @@ class _MainPageState extends State<MainPage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                NextPage(passwordList[index].name)));
+                                NextPage(passwordList, index: index)));
                     rebuild();
                   },
                 ),
