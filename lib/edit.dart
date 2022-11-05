@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/main.dart';
 import 'package:flutter_todo/password.dart';
@@ -21,7 +23,7 @@ class Edit extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: '登録名',
                 ),
                 onChanged: ((text) {
@@ -32,7 +34,7 @@ class Edit extends StatelessWidget {
                 height: 20,
               ),
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'ID or mail',
                 ),
                 onChanged: ((text) {
@@ -43,7 +45,7 @@ class Edit extends StatelessWidget {
                 height: 20,
               ),
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'パスワード',
                 ),
                 onChanged: ((text) {
