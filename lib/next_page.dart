@@ -14,11 +14,21 @@ class _NextPageState extends State<NextPage> {
   String passTitle = '';
   String password = '';
   String userId = '';
+  bool isEdit = false;
   void initEdit() {
     if (widget.index != null) {
       passTitle = widget.passwordList[widget.index!].name;
       password = widget.passwordList[widget.index!].password;
       userId = widget.passwordList[widget.index!].userId;
+    }
+    setState(() {});
+  }
+
+  void switchEdit() {
+    if (isEdit) {
+      isEdit = false;
+    } else {
+      isEdit = true;
     }
     setState(() {});
   }
@@ -32,71 +42,76 @@ class _NextPageState extends State<NextPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
-        title: Text(widget.passwordList[widget.index!].name),
+        leadingWidth: 40,
+        actions: [
+          GestureDetector(
+            child: Container(
+              padding: const EdgeInsets.only(right: 20),
+              alignment: Alignment.center,
+              child: (!isEdit) ? const Text('編集') : const Text('キャンセル'),
+            ),
+            onTap: () {
+              switchEdit();
+              print(isEdit);
+            },
+          ),
+        ],
+        centerTitle: true,
+        title: Text(passTitle),
         backgroundColor: Colors.black87,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(50.0),
+        padding: const EdgeInsets.all(30.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                const SizedBox(
-                  width: 60,
-                  child: Text(
-                    'ID',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ),
-                const SizedBox(width: 30),
-                Text(
-                  passTitle,
-                  style: const TextStyle(fontSize: 30),
-                ),
-              ],
-            ),
-            //余白
+            Row(children: const [
+              Text(
+                'ユーザー名（メールアドレス）',
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+            ]),
             const SizedBox(
-              height: 20,
+              height: 5,
             ),
             Row(
               children: [
-                const SizedBox(
-                  width: 60,
-                  child: Text(
-                    'pw',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  userId,
-                  style: const TextStyle(fontSize: 30),
-                ),
+                (isEdit)
+                    ? Text(
+                        userId,
+                        style:
+                            const TextStyle(fontSize: 30, color: Colors.blue),
+                      )
+                    : TextField(
+                        decoration: const InputDecoration(
+                          hintText: 'ID or mail',
+                        ),
+                        onChanged: ((text) {
+                          print(text);
+                        }),
+                      ),
               ],
             ),
             const SizedBox(
               height: 20,
             ),
+            Row(children: const [
+              Text(
+                'パスワード',
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+            ]),
             Row(
               children: [
-                const SizedBox(
-                  width: 60,
-                  child: Text(
-                    'user',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                ),
-                const SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  userId,
-                  style: const TextStyle(fontSize: 30),
+                Row(
+                  children: [
+                    Text(
+                      userId,
+                      style: const TextStyle(fontSize: 30, color: Colors.blue),
+                    ),
+                  ],
                 ),
               ],
             ),

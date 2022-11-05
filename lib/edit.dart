@@ -13,6 +13,7 @@ class Edit extends StatelessWidget {
     String mail = '';
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('追加画面'),
         backgroundColor: Colors.black87,
       ),

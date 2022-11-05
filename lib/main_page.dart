@@ -38,6 +38,15 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          Container(
+            padding: EdgeInsets.only(right: 20),
+            child: const Icon(
+              Icons.add,
+              size: 30,
+            ),
+          )
+        ],
         title: const Text('Flutter'),
         backgroundColor: Colors.black87,
       ),
