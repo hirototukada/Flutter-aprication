@@ -14,6 +14,8 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
+enum Main { google, amazon }
+
 class _MainPageState extends State<MainPage> {
   List<Password> passwordList = [];
   // Db定義
@@ -37,6 +39,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         actions: [
           Container(
@@ -56,8 +59,11 @@ class _MainPageState extends State<MainPage> {
             return Column(
               children: [
                 ListTile(
-                  leading: const Icon(Icons.key),
-                  title: Text(passwordList[index].name),
+                  leading: const Icon(Icons.key, color: Colors.blue),
+                  title: Text(
+                    passwordList[index].name,
+                    style: TextStyle(color: Colors.white),
+                  ),
                   onTap: () {
                     Navigator.push(
                         context,
@@ -66,9 +72,34 @@ class _MainPageState extends State<MainPage> {
                                 NextPage(passwordList, index: index)));
                     rebuild();
                   },
+                  trailing: GestureDetector(
+                    child: Container(
+                        child: PopupMenuButton(
+                      child: Text(
+                        'Test',
+                        style: TextStyle(color: Colors.amber),
+                      ),
+                      onSelected: popupMenuSelected,
+                      itemBuilder: ((BuildContext context) =>
+                          <PopupMenuEntry<Main>>[
+                            const PopupMenuItem(
+                                child: ListTile(
+                                    leading: Icon(Icons.supervisor_account),
+                                    title: Text('Edit Sgin in')),
+                                value: Main.google),
+                            const PopupMenuItem(
+                                child: ListTile(
+                                    leading: Icon(Icons.supervisor_account),
+                                    title: Text('Edit Sgin in')),
+                                value: Main.amazon),
+                          ]),
+                    )),
+                    onTap: () {},
+                  ),
                 ),
                 const Divider(
                   height: 0,
+                  color: Colors.grey,
                 ), // 線
               ],
             );
@@ -86,5 +117,22 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.blue,
       ),
     );
+  }
+
+  void popupMenuSelected(Main selectedMenu) {
+    switch (selectedMenu) {
+      case Main.google:
+        _pushPage(context, Edit());
+        break;
+      case Main.amazon:
+        _pushPage(context, Edit());
+        break;
+      default:
+        break;
+    }
+  }
+
+  void _pushPage(BuildContext context, Widget page) {
+    Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => page));
   }
 }

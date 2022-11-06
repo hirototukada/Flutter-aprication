@@ -78,20 +78,10 @@ class _NextPageState extends State<NextPage> {
             ),
             Row(
               children: [
-                (isEdit)
-                    ? Text(
-                        userId,
-                        style:
-                            const TextStyle(fontSize: 30, color: Colors.blue),
-                      )
-                    : TextField(
-                        decoration: const InputDecoration(
-                          hintText: 'ID or mail',
-                        ),
-                        onChanged: ((text) {
-                          print(text);
-                        }),
-                      ),
+                Text(
+                  userId,
+                  style: const TextStyle(fontSize: 30, color: Colors.blue),
+                ),
               ],
             ),
             const SizedBox(

@@ -1,7 +1,4 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/main.dart';
 import 'package:flutter_todo/password.dart';
 import 'package:flutter_todo/sqflite.dart';
 
@@ -24,9 +21,12 @@ class Edit extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextField(
-                decoration: const InputDecoration(
-                  hintText: '登録名',
-                ),
+                decoration: InputDecoration(
+                    hintText: '登録名',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(),
+                    )),
                 onChanged: ((text) {
                   name = text;
                 }),
@@ -35,9 +35,12 @@ class Edit extends StatelessWidget {
                 height: 20,
               ),
               TextField(
-                decoration: const InputDecoration(
-                  hintText: 'ID or mail',
-                ),
+                decoration: InputDecoration(
+                    hintText: 'ID or mail',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(),
+                    )),
                 onChanged: ((text) {
                   mail = text;
                 }),
@@ -46,9 +49,12 @@ class Edit extends StatelessWidget {
                 height: 20,
               ),
               TextField(
-                decoration: const InputDecoration(
-                  hintText: 'パスワード',
-                ),
+                decoration: InputDecoration(
+                    hintText: 'パスワード',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(),
+                    )),
                 onChanged: ((text) {
                   password = text;
                 }),
