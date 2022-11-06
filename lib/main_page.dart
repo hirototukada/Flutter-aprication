@@ -73,27 +73,26 @@ class _MainPageState extends State<MainPage> {
                     rebuild();
                   },
                   trailing: GestureDetector(
-                    child: Container(
-                        child: PopupMenuButton(
-                      child: Text(
-                        'Test',
-                        style: TextStyle(color: Colors.amber),
-                      ),
+                    child: PopupMenuButton(
                       onSelected: popupMenuSelected,
                       itemBuilder: ((BuildContext context) =>
                           <PopupMenuEntry<Main>>[
                             const PopupMenuItem(
+                                value: Main.google,
                                 child: ListTile(
                                     leading: Icon(Icons.supervisor_account),
-                                    title: Text('Edit Sgin in')),
-                                value: Main.google),
+                                    title: Text('Edit Sgin in'))),
                             const PopupMenuItem(
+                                value: Main.amazon,
                                 child: ListTile(
                                     leading: Icon(Icons.supervisor_account),
-                                    title: Text('Edit Sgin in')),
-                                value: Main.amazon),
+                                    title: Text('Edit Sgin in'))),
                           ]),
-                    )),
+                      child: const Text(
+                        'Test',
+                        style: TextStyle(color: Colors.amber),
+                      ),
+                    ),
                     onTap: () {},
                   ),
                 ),
