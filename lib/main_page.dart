@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/password.dart';
 import 'package:flutter_todo/sqflite.dart';
+import 'package:flutter_todo/update.dart';
 
 import 'edit.dart';
 import 'next_page.dart';
@@ -14,7 +15,7 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-enum Main { google, amazon }
+enum Main { edit, delete }
 
 class _MainPageState extends State<MainPage> {
   List<Password> passwordList = [];
@@ -42,13 +43,24 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Colors.black87,
       appBar: AppBar(
         actions: [
-          Container(
-            padding: EdgeInsets.only(right: 20),
+          PopupMenuButton(
+            onSelected: popupMenuSelected,
+            itemBuilder: ((BuildContext context) => <PopupMenuEntry<Main>>[
+                  const PopupMenuItem(
+                      value: Main.edit,
+                      child: ListTile(
+                          leading: Icon(Icons.mode_edit_outline),
+                          title: Text('設定'))),
+                  const PopupMenuItem(
+                      value: Main.delete,
+                      child: ListTile(
+                          leading: Icon(Icons.delete), title: Text('情報'))),
+                ]),
             child: const Icon(
-              Icons.add,
-              size: 30,
+              Icons.more_vert,
+              color: Colors.blue,
             ),
-          )
+          ),
         ],
         title: const Text('Flutter'),
         backgroundColor: Colors.black87,
@@ -72,29 +84,6 @@ class _MainPageState extends State<MainPage> {
                                 NextPage(passwordList, index: index)));
                     rebuild();
                   },
-                  trailing: GestureDetector(
-                    child: PopupMenuButton(
-                      onSelected: popupMenuSelected,
-                      itemBuilder: ((BuildContext context) =>
-                          <PopupMenuEntry<Main>>[
-                            const PopupMenuItem(
-                                value: Main.google,
-                                child: ListTile(
-                                    leading: Icon(Icons.supervisor_account),
-                                    title: Text('Edit Sgin in'))),
-                            const PopupMenuItem(
-                                value: Main.amazon,
-                                child: ListTile(
-                                    leading: Icon(Icons.supervisor_account),
-                                    title: Text('Edit Sgin in'))),
-                          ]),
-                      child: const Text(
-                        'Test',
-                        style: TextStyle(color: Colors.amber),
-                      ),
-                    ),
-                    onTap: () {},
-                  ),
                 ),
                 const Divider(
                   height: 0,
@@ -120,11 +109,11 @@ class _MainPageState extends State<MainPage> {
 
   void popupMenuSelected(Main selectedMenu) {
     switch (selectedMenu) {
-      case Main.google:
-        _pushPage(context, Edit());
+      case Main.edit:
+        _pushPage(context, Update());
         break;
-      case Main.amazon:
-        _pushPage(context, Edit());
+      case Main.delete:
+        _pushPage(context, Update());
         break;
       default:
         break;
