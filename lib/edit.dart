@@ -9,6 +9,7 @@ class Edit extends StatelessWidget {
     String password = '';
     String mail = '';
     return Scaffold(
+      backgroundColor: Colors.black87,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('追加画面'),
@@ -22,6 +23,8 @@ class Edit extends StatelessWidget {
             children: [
               TextField(
                 decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
                     hintText: '登録名',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -36,6 +39,8 @@ class Edit extends StatelessWidget {
               ),
               TextField(
                 decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
                     hintText: 'ID or mail',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
@@ -50,6 +55,8 @@ class Edit extends StatelessWidget {
               ),
               TextField(
                 decoration: InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
                     hintText: 'パスワード',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
