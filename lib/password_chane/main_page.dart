@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/password.dart';
-import 'package:flutter_todo/sqflite.dart';
-import 'package:flutter_todo/update.dart';
+import 'package:flutter_todo/password_chane/password.dart';
+import 'package:flutter_todo/password_chane/sqflite.dart';
+import 'package:flutter_todo/password_chane/update.dart';
 
 import 'edit.dart';
 import 'next_page.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo/password.dart';
+import 'package:flutter_todo/password_chane/password.dart';
 
 class NextPage extends StatefulWidget {
   final List<Password> passwordList;
