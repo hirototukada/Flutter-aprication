@@ -3,6 +3,11 @@ import 'package:flutter_todo/password_chane/password.dart';
 import 'package:flutter_todo/password_chane/sqflite.dart';
 
 class Update extends StatefulWidget {
+  final List<Password> passwordList;
+  final int? index;
+
+  Update(this.passwordList, {this.index});
+
   @override
   State<Update> createState() => _UpdateState();
 }
@@ -10,9 +15,10 @@ class Update extends StatefulWidget {
 class _UpdateState extends State<Update> {
   @override
   Widget build(BuildContext context) {
-    String name = '';
-    String password = '';
-    String mail = '';
+    String name = widget.passwordList[widget.index!].name;
+    String password = widget.passwordList[widget.index!].password;
+    String mail = widget.passwordList[widget.index!].userId;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -27,7 +33,7 @@ class _UpdateState extends State<Update> {
             children: [
               TextField(
                 decoration: InputDecoration(
-                    hintText: '登録名',
+                    hintText: widget.passwordList[widget.index!].name,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: const BorderSide(),
@@ -41,7 +47,7 @@ class _UpdateState extends State<Update> {
               ),
               TextField(
                 decoration: InputDecoration(
-                    hintText: 'ID or mail',
+                    hintText: widget.passwordList[widget.index!].userId,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: const BorderSide(),
@@ -55,7 +61,7 @@ class _UpdateState extends State<Update> {
               ),
               TextField(
                 decoration: InputDecoration(
-                    hintText: 'パスワード',
+                    hintText: widget.passwordList[widget.index!].password,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),
                       borderSide: const BorderSide(),
@@ -72,8 +78,11 @@ class _UpdateState extends State<Update> {
                   ElevatedButton(
                     onPressed: () async {
                       Password passwordList = Password(
-                          name: name, userId: mail, password: password);
-                      await DBProvider.insertData(passwordList);
+                          id: widget.index!,
+                          name: name,
+                          userId: mail,
+                          password: password);
+                      await DBProvider.updateData(passwordList);
                       Navigator.pop(context);
                     },
                     child: const Text('追加'),

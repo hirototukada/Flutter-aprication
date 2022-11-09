@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_todo/password_chane/password.dart';
 import 'package:flutter_todo/password_chane/sqflite.dart';
 import 'package:flutter_todo/password_chane/update.dart';
@@ -70,20 +71,50 @@ class _MainPageState extends State<MainPage> {
           itemBuilder: (context, index) {
             return Column(
               children: [
-                ListTile(
-                  leading: const Icon(Icons.key, color: Colors.blue),
-                  title: Text(
-                    passwordList[index].name,
-                    style: TextStyle(color: Colors.white),
+                Slidable(
+                  endActionPane: ActionPane(motion: ScrollMotion(), children: [
+                    SlidableAction(
+                      flex: 2,
+                      onPressed: (context) async {
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    Update(passwordList, index: index)));
+                        rebuild();
+                      },
+                      backgroundColor: Color(0xFF7BC043),
+                      foregroundColor: Colors.white,
+                      icon: Icons.edit,
+                      label: '編集',
+                    ),
+                    SlidableAction(
+                      flex: 2,
+                      onPressed: ((context) async {
+                        await DBProvider.deleteData(index);
+                        rebuild();
+                      }),
+                      backgroundColor: Colors.red,
+                      foregroundColor: Colors.white,
+                      icon: Icons.delete,
+                      label: '削除',
+                    )
+                  ]),
+                  child: ListTile(
+                    leading: const Icon(Icons.key, color: Colors.blue),
+                    title: Text(
+                      passwordList[index].name,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  NextPage(passwordList, index: index)));
+                      rebuild();
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                NextPage(passwordList, index: index)));
-                    rebuild();
-                  },
                 ),
                 const Divider(
                   height: 0,
@@ -110,10 +141,10 @@ class _MainPageState extends State<MainPage> {
   void popupMenuSelected(Main selectedMenu) {
     switch (selectedMenu) {
       case Main.edit:
-        _pushPage(context, Update());
+        print('パスワード画面へ');
         break;
       case Main.delete:
-        _pushPage(context, Update());
+        print('Todo画面へ');
         break;
       default:
         break;

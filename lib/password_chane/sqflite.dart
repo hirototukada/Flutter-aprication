@@ -49,6 +49,7 @@ class DBProvider {
   }
 
   static Future<void> updateData(Password password) async {
+    print(password.id);
     await database!.update(
       tableName,
       {
